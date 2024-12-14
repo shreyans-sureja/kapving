@@ -1,4 +1,4 @@
-class AuthRepo {
+class SqliteRepo {
 
     constructor (sqlite) {
         this.sqlite = sqlite;
@@ -29,6 +29,22 @@ class AuthRepo {
         }
         return true
     }
+
+    // add video meta into database.
+    async addVideoRecord(user_id, fileName, filePath) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.run(
+                `INSERT INTO videos (userid, title, location) VALUES (?, ?, ?)`,
+                [user_id, fileName, filePath],
+                 (err) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve();
+                }
+            );
+        });
+    }
 }
 
-module.exports = AuthRepo;
+module.exports = SqliteRepo;
