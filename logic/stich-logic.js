@@ -8,12 +8,11 @@ class StichLogic {
         this.helper = helper;
     }
 
-    async stichVideos(userId) {
-        let [recordsErr, recordsData] = await this.helper.invoker(this.sqliteRepo.getVideoRecordsForUser(userId));
+    async stichVideos(userId, videoIds) {
+        let [recordsErr, recordsData] = await this.helper.invoker(this.sqliteRepo.getVideoRecordsForUser(userId, videoIds));
         const videoPaths = recordsData.map(item => item.location);
-        const videoIds = recordsData.map(item => item.id);
-        if (videoPaths.length <= 1){
-            return "No stiching required!";
+        if (videoIds.length !== videoPaths.length){
+            throw new Error("Invalid video ids");
         }
 
         let videoFormat = videoPaths[0].split('.')[1]

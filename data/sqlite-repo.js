@@ -76,10 +76,10 @@ class SqliteRepo {
         });
     }
 
-    async getVideoRecordsForUser(user_id) {
+    async getVideoRecordsForUser(user_id, videoIds) {
         return new Promise((resolve, reject) => {
             this.sqlite.all(
-                `SELECT * FROM videos WHERE userid = ?`,
+                `SELECT * FROM videos WHERE userid = ?  AND id IN (${videoIds.join(',')})`,
                 [user_id],
                 (err, rows) => {
                     if (err) {
