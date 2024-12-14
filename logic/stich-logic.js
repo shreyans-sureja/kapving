@@ -16,7 +16,7 @@ class StichLogic {
         }
 
         let videoFormat = videoPaths[0].split('.')[1]
-        let outputPath = `uploads/test_${Date.now()}_${userId}.${videoFormat}`;
+        let outputPath = `uploads/${Date.now()}_${userId}.${videoFormat}`;
 
         let [stichErr, stichData] = await this.helper.invoker(this.stichAllVideos(videoPaths, outputPath));
         if (stichErr) {
