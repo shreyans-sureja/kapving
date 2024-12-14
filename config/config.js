@@ -3,6 +3,7 @@ const config = {
     max_video_length : 120,  // 120 second
     min_video_length : 5,   // 5 second
     max_video_size : 10 * 1024 * 1024, // 10 MB
+    expire_duration : 2  // 2 days
 }
 
 module.exports = config;

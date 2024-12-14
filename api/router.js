@@ -13,4 +13,8 @@ router.post('/stich', (req, res) => {
    req.container.resolve('stichApi').handleRequest(req, res);
 });
 
+router.get('/link', (req, res) => {
+   req.container.resolve('linkApi').handleRequest(req, res);
+});
+
 module.exports = router;

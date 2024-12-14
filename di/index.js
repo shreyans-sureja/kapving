@@ -15,11 +15,13 @@ container.register('sqliteRepo', asClass(require('../data/sqlite-repo')));
 container.register('uploadApi', asClass(require('../api/upload-api')));
 container.register('trimApi', asClass(require('../api/trim-api')));
 container.register('stichApi', asClass(require('../api/stich-api')));
+container.register('linkApi', asClass(require('../api/link-api')));
 
 
 container.register('uploadLogic', asClass(require('../logic/upload-logic')));
 container.register('trimLogic', asClass(require('../logic/trim-logic')));
 container.register('stichLogic', asClass(require('../logic/stich-logic')));
+container.register('linkLogic', asClass(require('../logic/link-logic')));
 
 
 container.register('helper', asClass(require('../utils/helper')));

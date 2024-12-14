@@ -1,7 +1,8 @@
 class SqliteRepo {
 
-    constructor (sqlite) {
+    constructor (sqlite, config) {
         this.sqlite = sqlite;
+        this.config = config;
     }
 
     async getUserToken(user_id) {
@@ -96,6 +97,21 @@ class SqliteRepo {
             this.sqlite.run(
                 `DELETE FROM videos WHERE id IN (${ids.join(',')})`,
                 [],
+                (err) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve();
+                }
+            );
+        });
+    }
+
+    async updateLinkExpiry(id) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.run(
+                `UPDATE videos SET expire_time = DATETIME('now', '+${this.config.expire_duration} days')  WHERE id = ?`,
+                [id],
                 (err) => {
                     if (err) {
                         return reject(err);
