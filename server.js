@@ -11,8 +11,8 @@ const server = (container) => {
        app.use(morgan('dev'));
        app.use(helmet());
        app.use(cors());
-       // app.use(bodyParser.urlencoded({extended : true}));
-       // app.use(bodyParser.json());
+       app.use(bodyParser.urlencoded({extended : true}));
+       app.use(bodyParser.json());
 
        app.get('/', (req, res) => {
           res.send("Hello from kapving");
