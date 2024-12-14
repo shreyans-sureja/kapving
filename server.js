@@ -23,7 +23,7 @@ const server = (container) => {
           next();
        });
 
-       app.use('/v1', router);
+       app.use('/kapving/v1', router);
        return resolve(app);
     });
 }
