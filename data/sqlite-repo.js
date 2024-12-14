@@ -45,6 +45,36 @@ class SqliteRepo {
             );
         });
     }
+
+    async getVideoRecord(video_id) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.get(
+                `SELECT * FROM videos WHERE id = ?`,
+                [video_id],
+                (err, row) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(row);
+                }
+            );
+        });
+    }
+
+    async updateVideoPath(id, title, newLocation) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.run(
+                `UPDATE videos SET title = ?, location = ?, updated_at = CURRENT_TIMESTAMP  WHERE id = ?`,
+                [title, newLocation, id],
+                (err) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve();
+                }
+            );
+        });
+    }
 }
 
 module.exports = SqliteRepo;
