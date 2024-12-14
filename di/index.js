@@ -13,8 +13,13 @@ container.register('config', asValue(require('../config/config')));
 container.register('sqliteRepo', asClass(require('../data/sqlite-repo')));
 
 container.register('uploadApi', asClass(require('../api/upload-api')));
+container.register('trimApi', asClass(require('../api/trim-api')));
+
 
 container.register('uploadLogic', asClass(require('../logic/upload-logic')));
+container.register('trimLogic', asClass(require('../logic/trim-logic')));
+
+container.register('helper', asClass(require('../utils/helper')));
 
 container.register({
     'sqlite': asFunction(sqliteConnect).singleton(),
