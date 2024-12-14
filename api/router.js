@@ -9,4 +9,8 @@ router.post('/trim', (req, res) => {
    req.container.resolve('trimApi').handleRequest(req, res);
 });
 
+router.post('/stich', (req, res) => {
+   req.container.resolve('stichApi').handleRequest(req, res);
+});
+
 module.exports = router;

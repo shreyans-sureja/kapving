@@ -75,6 +75,36 @@ class SqliteRepo {
             );
         });
     }
+
+    async getVideoRecordsForUser(user_id) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.all(
+                `SELECT * FROM videos WHERE userid = ?`,
+                [user_id],
+                (err, rows) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(rows);
+                }
+            );
+        });
+    }
+
+    async bulkDeleteVideos(ids) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.run(
+                `DELETE FROM videos WHERE id IN (${ids.join(',')})`,
+                [],
+                (err) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve();
+                }
+            );
+        });
+    }
 }
 
 module.exports = SqliteRepo;

@@ -3,15 +3,16 @@ const fs = require('fs');
 
 class UploadLogic {
 
-    constructor(config, multerConfig, sqliteRepo) {
+    constructor(config, multerConfig, sqliteRepo, helper) {
         this.config = config;
         this.multerConfig = multerConfig;
         this.uploadHandler = this.multerConfig.single('video');
         this.sqliteRepo = sqliteRepo;
+        this.helper = helper;
     }
 
     async uploadVideo(req, res, user_id) {
-        this.uploadHandler(req, res, async (err) => {
+         this.uploadHandler(req, res, async (err) => {
             if (err) {
                 return res.status(500).send({ message: err.message });
             }
@@ -27,12 +28,10 @@ class UploadLogic {
                  return res.status(400).send({ message: 'Video duration must be in 5-120 seconds range!' });
             }
 
-            try{
-                await this.sqliteRepo.addVideoRecord(user_id, videoName, videoPath);
-            }
-            catch (err) {
+            let [videoRecordErr, videoRecordRes] = await this.helper.invoker(this.sqliteRepo.addVideoRecord(user_id, videoName, videoPath));
+            if (videoRecordErr) {
                 fs.unlinkSync(videoPath);
-                return res.status(500).send({ message: err.message });
+                return res.status(500).send({ message: videoRecordErr.message });
             }
 
              res.status(200).send({message: 'Video uploaded successfully!' });
