@@ -1,8 +1,9 @@
 class LinkLogic {
 
-    constructor(helper, sqliteRepo) {
+    constructor(helper, sqliteRepo, config) {
         this.helper = helper;
         this.sqliteRepo = sqliteRepo;
+        this.config = config;
     }
 
     async generateLink(userId, videoId) {
@@ -20,7 +21,8 @@ class LinkLogic {
             throw updateErr;
         }
 
-        return key;
+        const urlLink = this.config.link_prefix_url + key;
+        return urlLink;
     }
 }
 
