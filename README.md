@@ -30,3 +30,24 @@
 3. **To Run the server**:
    ```bash
    node index.js
+
+### choices:
+
+1. Upload API:
+``Users are allowed to upload videos with a maximum size of 10 MB. The video duration must be within the range of [5, 120] seconds.``
+
+
+2. Trim API:
+``Users are allowed to trim videos from the beginning by specifying the start duration (in seconds). This API can be extended to allow trimming from the end as well.``
+
+
+3. Stich(Merge) API:
+``Users can stitch multiple videos into a single video using this API.``
+
+
+4. Link API:
+``Users can create a link for an uploaded video. Note: Multiple links can be created for the same video, as different links can serve different purposes in the future, such as tracking.``
+
+
+5. Share-link API:
+``Users can access the shared video through this API before it expires. Each link expires 2 days after its creation.``

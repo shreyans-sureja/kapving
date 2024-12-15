@@ -1,8 +1,6 @@
 const ffmpeg = require('fluent-ffmpeg');
-const fs = require('fs');
 
 // citation : https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
-// and https://nodejs.org/api/fs.html
 class StichLogic {
 
     constructor(sqliteRepo, helper) {
@@ -31,13 +29,6 @@ class StichLogic {
         if (mergeErr) {
             throw mergeErr;
         }
-
-        // delete older videos
-        let [deleteErr, deleteMsg] = await this.helper.invoker(this.sqliteRepo.bulkDeleteVideos(videoIds));
-        for (let path of videoPaths) {
-            fs.unlinkSync(path);
-        }
-
         return "success";
     }
 

@@ -92,21 +92,6 @@ class SqliteRepo {
         });
     }
 
-    async bulkDeleteVideos(ids) {
-        return new Promise((resolve, reject) => {
-            this.sqlite.run(
-                `DELETE FROM videos WHERE id IN (${ids.join(',')})`,
-                [],
-                (err) => {
-                    if (err) {
-                        return reject(err);
-                    }
-                    return resolve();
-                }
-            );
-        });
-    }
-
     async createLink(id, videoId, location) {
         return new Promise((resolve, reject) => {
             this.sqlite.run(
