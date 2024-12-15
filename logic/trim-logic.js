@@ -16,7 +16,7 @@ class TrimLogic {
         let [err, videoRecord] = await this.helper.invoker(this.sqliteRepo.getVideoRecord(data.video_id));
         if(err) {
             throw err;
-        } else if (data.user_id != videoRecord.userid) {
+        } else if (!videoRecord || data.user_id != videoRecord.userid) {
             throw new Error('Video does not exist');
         }
 

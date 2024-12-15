@@ -1,0 +1,277 @@
+{
+	"info": {
+		"_postman_id": "52baf867-f53b-4d71-a25a-fd4c5b589048",
+		"name": "kapving",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14106960"
+	},
+	"item": [
+		{
+			"name": "Upload API",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "vtMfjy3gEJ3J5kxvkf1dBkIQrV2bUzv0X1CSb3WqGZxffVwUhQdHuEV1IP0TCgGs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "user_id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "video",
+							"type": "file",
+							"src": "/Users/shreyanssureja/Downloads/videoverse.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/kapving/v1/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"kapving",
+						"v1",
+						"upload"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "1134",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Trim API",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "vtMfjy3gEJ3J5kxvkf1dBkIQrV2bUzv0X1CSb3WqGZxffVwUhQdHuEV1IP0TCgGs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "user_id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/kapving/v1/trim?start=20&video_id=16",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"kapving",
+						"v1",
+						"trim"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "20"
+						},
+						{
+							"key": "end",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "video_id",
+							"value": "16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stich API",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "vtMfjy3gEJ3J5kxvkf1dBkIQrV2bUzv0X1CSb3WqGZxffVwUhQdHuEV1IP0TCgGs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "user_id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ids\" : [19,20]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/kapving/v1/stich",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"kapving",
+						"v1",
+						"stich"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "end",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "video_id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Link API",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "vtMfjy3gEJ3J5kxvkf1dBkIQrV2bUzv0X1CSb3WqGZxffVwUhQdHuEV1IP0TCgGs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user_id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/kapving/v1/link?video_id=21",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"kapving",
+						"v1",
+						"link"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "end",
+							"value": "5",
+							"disabled": true
+						},
+						{
+							"key": "video_id",
+							"value": "21"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "share link api",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "vtMfjy3gEJ3J5kxvkf1dBkIQrV2bUzv0X1CSb3WqGZxffVwUhQdHuEV1IP0TCgGs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "user_id",
+						"value": "1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/kapving/v1/link/1734230525932_14",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"kapving",
+						"v1",
+						"link",
+						"1734230525932_14"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "end",
+							"value": "5",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
