@@ -107,16 +107,31 @@ class SqliteRepo {
         });
     }
 
-    async updateLinkExpiry(id) {
+    async createLink(id, videoId, location) {
         return new Promise((resolve, reject) => {
             this.sqlite.run(
-                `UPDATE videos SET expire_time = DATETIME('now', '+${this.config.expire_duration} days')  WHERE id = ?`,
-                [id],
+                `INSERT INTO links (id, expiry_time, videoid, location) VALUES (?, DATETIME('now', '+${this.config.expire_duration} days'), ? ,?)`,
+                [id, videoId, location],
                 (err) => {
                     if (err) {
                         return reject(err);
                     }
                     return resolve();
+                }
+            );
+        });
+    }
+
+    async getLinkDetails(id) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.get(
+                `SELECT * FROM links WHERE id = ?`,
+                [id],
+                (err, row) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(row);
                 }
             );
         });

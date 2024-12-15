@@ -17,4 +17,9 @@ router.get('/link', (req, res) => {
    req.container.resolve('linkApi').handleRequest(req, res);
 });
 
+router.get('/link/:key', (req, res) => {
+   req.container.resolve('shareLinkApi').handleRequest(req, res);
+});
+
+
 module.exports = router;
