@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-
+// citation : https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
+// and https://nodejs.org/api/fs.html
 class ShareLinkLogic {
 
     constructor(helper, sqliteRepo) {

@@ -1,6 +1,8 @@
 const ffmpeg = require('fluent-ffmpeg');
 const fs = require('fs');
 
+// citation : https://github.com/fluent-ffmpeg/node-fluent-ffmpeg
+// and https://nodejs.org/api/fs.html
 class StichLogic {
 
     constructor(sqliteRepo, helper) {

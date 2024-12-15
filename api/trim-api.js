@@ -5,6 +5,8 @@ class TrimApi {
         this.trimLogic = trimLogic;
     }
 
+    // API To trim the previously uploaded video from the beginning
+    // start - Duration in seconds to trim.
     async handleRequest(req, res) {
         let {authorization, user_id} = req.headers;
         let {video_id, start} = req.query;

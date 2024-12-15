@@ -5,6 +5,7 @@ class UploadApi {
         this.uploadLogic = uploadLogic;
     }
 
+    // API to upload a video
     async handleRequest(req, res) {
         let {authorization, user_id} = req.headers;
         const isValidUser = await this.sqliteRepo.isAuthenticated(authorization, user_id)

@@ -6,6 +6,7 @@ class LinkApi {
         this.linkLogic = linkLogic;
     }
 
+    // API to generate sharable link
     async handleRequest(req, res) {
         let {authorization, user_id} = req.headers;
         let {video_id} = req.query;

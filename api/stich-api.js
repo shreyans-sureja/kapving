@@ -5,6 +5,7 @@ class StichApi {
         this.stichLogic = stichLogic;
     }
 
+    // API to merge previously uploaded videos via passing video_ids
     async handleRequest(req, res) {
         const {authorization, user_id} = req.headers;
         const videoIds = req.body.ids;

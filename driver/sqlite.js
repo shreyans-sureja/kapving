@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
+// citation : https://medium.com/@codesprintpro/getting-started-sqlite3-with-nodejs-8ef387ad31c4
 function sqliteConnect() {
     const dbPath = './database.db'
 

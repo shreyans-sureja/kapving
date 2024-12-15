@@ -4,6 +4,7 @@ const fs = require('fs');
 const config = require('../config/config')
 
 // Function to create multer upload configuration
+// citation : https://www.npmjs.com/package/multer
 const multerConfig = () => {
     const storage = multer.diskStorage({
         destination: (req, file, cb) => {

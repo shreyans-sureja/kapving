@@ -5,6 +5,7 @@ class ShareLinkApi {
         this.shareLinkLogic = shareLinkLogic;
     }
 
+    // API to handle shared public link
     async handleRequest(req, res) {
         const key = req.params.key;
         if(!key) {
