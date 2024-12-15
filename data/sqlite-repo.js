@@ -1,7 +1,8 @@
 class SqliteRepo {
 
-    constructor (sqlite) {
+    constructor (sqlite, config) {
         this.sqlite = sqlite;
+        this.config = config;
     }
 
     async getUserToken(user_id) {
@@ -101,6 +102,36 @@ class SqliteRepo {
                         return reject(err);
                     }
                     return resolve();
+                }
+            );
+        });
+    }
+
+    async createLink(id, videoId, location) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.run(
+                `INSERT INTO links (id, expiry_time, videoid, location) VALUES (?, DATETIME('now', '+${this.config.expire_duration} days'), ? ,?)`,
+                [id, videoId, location],
+                (err) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    return resolve();
+                }
+            );
+        });
+    }
+
+    async getLinkDetails(id) {
+        return new Promise((resolve, reject) => {
+            this.sqlite.get(
+                `SELECT * FROM links WHERE id = ?`,
+                [id],
+                (err, row) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(row);
                 }
             );
         });
